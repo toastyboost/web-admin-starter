@@ -1,26 +1,19 @@
-import { Dashboard, Page404 } from 'pages'
+import { DashboardPage, LoginPage, Page404 } from 'pages'
 
-export type RouteProps = {
-  component: React.FunctionComponent
-  exact: boolean
-  routes: Array<any>
-}
-
-export const NAVIGATION_ROUTES = [
-  {
+export const ROUTES_OBJECT = {
+  users: {
     path: '/',
-    component: Dashboard,
     exact: true,
-    title: 'Дашборд'
-  }
-]
-
-export const ERROR_ROUTES = [
-  {
+    component: DashboardPage
+    // guards: [onlyUsers()],
+  },
+  login: {
+    path: '/',
+    exact: true,
+    component: LoginPage
+    // guards: [onlyAnon()],
+  },
+  error: {
     component: Page404
   }
-]
-
-// ROOT
-
-export const ROUTES = [...NAVIGATION_ROUTES, ...ERROR_ROUTES]
+}

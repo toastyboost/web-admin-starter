@@ -1,26 +1,38 @@
 import { createGlobalStyle } from 'styled-components'
-import 'antd/dist/antd.min.css'
+import { normalize } from 'styled-normalize'
 
-import { Normalize } from './normalize'
-import { AnimationStyles } from './animations'
-import { FontsStyles } from './fonts'
+const GlobalStyles = createGlobalStyle`
 
-export const GlobalStyles = createGlobalStyle`
-  ${Normalize}
-  ${FontsStyles}
+  @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
   
+  ${normalize}
+   
+  * {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+  }
+
   :root {
-    --main-font: "Roboto", sans-serif;
-    --text-font: "Merriweather", serif;
-    --text-color: rgba(0, 0, 0, 0.85);
+    --main-font: 'Roboto', sans-serif;
+    --title-font: 'Merriweather', serif;
+    --primary: #fff;
+    --secondary: #fff;
+    --warning: #fff;
+    --highlight: #f3f8fe;
+    --text-color: rgba(40, 46, 52, 0.8);
+    --text-color--secondary: rgba(56, 56, 56, 0.6);
     --title-color: rgba(0, 0, 0, 1);
+    --link-active: #03a9f4;
+    --link-hover: #2196f3;
     --border-color: rgba(0, 0, 0, 0.05);
     --body-bg: #fff;
     --block-bg: #fff;
     --red: #ff4748;
     --green: #2e9e22;
     --blue: #157efb;
-    --pad: 12;
+    --box-shadow: 0 2px 6px 4px rgba(0, 0, 0, 0.03);
   }
 
   body,
@@ -39,11 +51,6 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
-  #root {
-    min-height: 100vh;
-    height: 100%;
-  }
-
   section {
     font-size: 1.6rem;
   }
@@ -55,10 +62,6 @@ export const GlobalStyles = createGlobalStyle`
     font-family: var(--main-font);
     line-height: 1.1;
     color: var(--text-color);
-  }
-
-  h2 {
-    font-size: 2.4rem;
   }
 
   p {
@@ -77,7 +80,7 @@ export const GlobalStyles = createGlobalStyle`
     border: 0;
     transition: 0.2s;
     text-decoration: none;
-    color: var(--blue);
+    color: var(--black);
   }
 
   a:visited,
@@ -102,5 +105,11 @@ export const GlobalStyles = createGlobalStyle`
     list-style-type: none;
   }
 
-  ${AnimationStyles}
+  section,
+  header,
+  footer {
+    font-size: 1.6rem;
+  }
 `
+
+export { GlobalStyles }
