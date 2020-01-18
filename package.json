@@ -3,21 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/node": "12.7.8",
-    "@types/react": "16.9.4",
-    "@types/react-dom": "16.9.1",
-    "@types/react-router-dom": "^5.1.0",
-    "@types/styled-components": "^4.1.19",
     "antd": "^3.23.5",
-    "babel-plugin-import": "^1.12.2",
     "history": "^4.10.1",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "styled-components": "^5.0.0-beta.9",
-    "styled-normalize": "^8.0.6",
-    "typescript": "3.6.3"
+    "styled-normalize": "^8.0.6"
+  },
+  "devDependencies": {
+    "@types/node": "12.7.8",
+    "@types/react": "16.9.4",
+    "@types/react-dom": "16.9.1",
+    "@types/react-router-dom": "^5.1.0",
+    "@types/styled-components": "^4.1.19",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
+    "eslint": "^6.6.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.4"
   },
   "scripts": {
     "start": "react-scripts start",

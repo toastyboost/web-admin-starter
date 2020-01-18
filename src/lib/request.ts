@@ -1,40 +1,40 @@
-import { fetchMocks, apiMock } from './mocks'
+import { fetchMocks, apiMock } from './mocks';
 
-const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT || ''
+const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT || '';
 
 export type RequestProps = {
-  method?: string
-  url: string
-  params?: object
-}
+  method?: string;
+  url: string;
+  params?: object;
+};
 
 export const request = async ({
   url,
   method = 'POST',
-  params = {}
+  params = {},
 }: RequestProps): Promise<any> => {
-  const fetchUrl = SERVER_ENDPOINT + url
+  const fetchUrl = SERVER_ENDPOINT + url;
   const options = {
     method,
-    body: JSON.stringify(params)
-  }
+    body: JSON.stringify(params),
+  };
 
   try {
-    const mockMethod = `${method} ${url}`
+    const mockMethod = `${method} ${url}`;
 
     if (mockMethod in apiMock) {
-      return fetchMocks(fetchUrl, options)
+      return fetchMocks(fetchUrl, options);
     }
 
-    const response = await fetch(fetchUrl, options)
-    const result = await response.json()
+    const response = await fetch(fetchUrl, options);
+    const result = await response.json();
 
     if (!response.ok) {
-      throw new Error(result)
+      throw new Error(result);
     }
 
-    return result
+    return result;
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err);
   }
-}
+};
