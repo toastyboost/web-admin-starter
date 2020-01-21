@@ -1,29 +1,23 @@
-import * as React from 'react'
+import * as React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { compileRoutes as renderRoutes } from 'router-guards';
+import { useStore } from 'effector-react';
 
-import { Router, Route, Switch } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
-
-import { ROUTES_OBJECT } from 'pages/routes'
-import { GenericTemplate } from 'ui/templates'
-
-import { GlobalStyles } from './styles'
-import 'antd/dist/antd.min.css'
-
-const history = createBrowserHistory()
+import { GenericTemplate } from 'ui/templates';
+import { ROUTES } from 'pages/routes';
+import { $session } from 'features/user';
 
 export const App = () => {
+  const session = useStore($session);
+  const routes = renderRoutes(ROUTES, session);
+
   return (
-    <>
-      <GlobalStyles />
-      <Router history={history}>
-        <GenericTemplate>
-          {/* <Switch>
-            {Object.keys(ROUTES_OBJECT).map((route, key) => (
-              <Route key={key} {...ROUTES_OBJECT[route]} />
-            ))}
-          </Switch> */}
-        </GenericTemplate>
-      </Router>
-    </>
-  )
-}
+    <GenericTemplate>
+      <Switch>
+        {routes.map((route, key) => (
+          <Route key={key} {...route} />
+        ))}
+      </Switch>
+    </GenericTemplate>
+  );
+};

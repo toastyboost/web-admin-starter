@@ -1,6 +1,20 @@
-import * as React from 'react'
-import * as ReactDom from 'react-dom'
+import * as React from 'react';
+import * as ReactDom from 'react-dom';
 
-import { App } from './app'
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
-ReactDom.render(<App />, document.getElementById('root'))
+import { GenericStyles } from './styles';
+import { App } from './app';
+
+const history = createBrowserHistory();
+
+ReactDom.render(
+  <>
+    <GenericStyles />
+    <Router history={history}>
+      <App />
+    </Router>
+  </>,
+  document.getElementById('root'),
+);

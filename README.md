@@ -1,9 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web Admin starter
 
-## Available Scripts
+## Features
 
-Ant Design
+- [x] Create React App
+- [x] Ant Design
+- [x] Role Based routing
+
+## Libs
+
+- [x] React, React Router
+- [x] Effector
 
 ## TODO
 
 - [ ] Add login page
+- [ ] Update TS config
+- [ ] Add table boilerplate

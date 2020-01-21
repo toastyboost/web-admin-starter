@@ -1,19 +1,19 @@
-import { DashboardPage, LoginPage, Page404 } from 'pages'
+import { DashboardPage, LoginPage, NotFound } from 'pages';
+import { onlyUsers, onlyFor } from 'features/user';
 
-export const ROUTES_OBJECT = {
-  users: {
-    path: '/',
-    exact: true,
-    component: DashboardPage
-    // guards: [onlyUsers()],
-  },
+export const ROUTES = {
   login: {
     path: '/',
-    exact: true,
-    component: LoginPage
-    // guards: [onlyAnon()],
+    component: LoginPage,
+    guards: [onlyUsers()],
   },
-  error: {
-    component: Page404
-  }
-}
+  dashboard: {
+    path: '/',
+    component: DashboardPage,
+    guards: [onlyFor(['CLIENT', 'ADMIN'])],
+  },
+  404: {
+    path: '*',
+    component: NotFound,
+  },
+};

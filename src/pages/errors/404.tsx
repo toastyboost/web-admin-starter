@@ -1,5 +1,5 @@
-import React from 'react';
+import * as React from 'react';
 
 import { Container } from './styles';
 
-export const Page404: React.FC = () => <Container>404. страница не найдена</Container>;
+export const NotFound: React.FC = () => <Container>404. Not Found</Container>;

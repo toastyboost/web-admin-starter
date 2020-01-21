@@ -1,7 +1,9 @@
-import { createGlobalStyle } from 'styled-components'
-import { normalize } from 'styled-normalize'
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
-const GlobalStyles = createGlobalStyle`
+import 'antd/dist/antd.min.css';
+
+export const GenericStyles = createGlobalStyle`
 
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
   
@@ -110,6 +112,4 @@ const GlobalStyles = createGlobalStyle`
   footer {
     font-size: 1.6rem;
   }
-`
-
-export { GlobalStyles }
+`;

@@ -1,3 +1,3 @@
-export { DashboardPage } from './dashboard'
-export { LoginPage } from './login'
-export { Page404 } from './errors'
+export { DashboardPage } from './dashboard';
+export { LoginPage } from './login';
+export { NotFound } from './errors';

@@ -1,2 +1,2 @@
-export { Wrap } from './common'
-export { GlobalStyles } from './defaults'
+export { Wrap } from './common';
+export { GenericStyles } from './defaults';
