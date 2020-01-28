@@ -3,6 +3,8 @@ import { normalize } from 'styled-normalize';
 
 import 'antd/dist/antd.min.css';
 
+import { antOverrides } from 'styles';
+
 export const GenericStyles = createGlobalStyle`
 
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
@@ -112,4 +114,10 @@ export const GenericStyles = createGlobalStyle`
   footer {
     font-size: 1.6rem;
   }
+
+  .ant-layout {
+    min-height: 100vh;
+  }
+  
+  ${antOverrides}
 `;

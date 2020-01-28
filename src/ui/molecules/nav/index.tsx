@@ -1,15 +1,15 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import { NavContainer, NavLink, NavMenu, NavItem } from './styles'
+import { NavContainer, NavLink, NavMenu, NavItem } from './styles';
 
 type MenuItem = {
-  path: string
-  title: string
-}
+  path: string;
+  title: string;
+};
 
 type MenuData = {
-  data: Array<MenuItem>
-}
+  data: Array<MenuItem>;
+};
 
 export const Nav: React.FC<MenuData> = ({ data }) => {
   return (
@@ -22,5 +22,5 @@ export const Nav: React.FC<MenuData> = ({ data }) => {
         ))}
       </NavMenu>
     </NavContainer>
-  )
-}
+  );
+};

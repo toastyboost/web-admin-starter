@@ -3,6 +3,16 @@ type FetchProps = {
   body: string;
 };
 
+function wait<R, T>(data: R): Promise<T> {
+  return new Promise((resolve) => {
+    setTimeout(
+      resolve,
+      Math.floor(Math.random() * 500) + 300,
+      JSON.stringify(data),
+    );
+  });
+}
+
 export const apiMock: Mocks = {
   'POST /user/signin': (body: string): object => {
     let found;
@@ -57,7 +67,7 @@ export const apiMock: Mocks = {
 export const fetchMocks = async (
   url: string,
   { method, body }: FetchProps,
-): Promise<Response> => {
+): Promise<any> => {
   const mockMethod = `${method} ${url}`;
 
   const answer = apiMock[mockMethod](body);
@@ -69,24 +79,14 @@ export const fetchMocks = async (
   return await wait(answer);
 };
 
-function wait<T>(data: any): Promise<T> {
-  return new Promise((resolve) => {
-    setTimeout(
-      resolve,
-      Math.floor(Math.random() * 500) + 300,
-      JSON.stringify(data),
-    );
-  });
-}
-
 type Mocks = {
   [key: string]: (body: string) => object;
 };
 
-class Failed extends Error {
-  public data: object;
-  constructor(data: { error: string }) {
-    super(`Failed to fetch data: ${data.error}`);
-    this.data = data;
-  }
-}
+// class Failed extends Error {
+//   public data: object;
+//   constructor(data: { error: string }) {
+//     super(`Failed to fetch data: ${data.error}`);
+//     this.data = data;
+//   }
+// }

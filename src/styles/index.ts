@@ -1,2 +1,2 @@
-export { Wrap } from './common';
 export { GenericStyles } from './defaults';
+export { antOverrides } from './ant';

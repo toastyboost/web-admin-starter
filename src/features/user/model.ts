@@ -1,11 +1,15 @@
-import { createStore } from 'effector';
+import { createStore, createEffect } from 'effector';
 
-export type Roles = 'USER' | 'CLIENT' | 'ADMIN';
+import * as API from 'api/user';
 
-export type UserSession = {
-  role: Roles | null;
-};
-
-export const $session = createStore<UserSession>({
+export const $session = createStore<API.UserSession>({
   role: null,
 });
+
+export const getRole = createEffect<void, API.UserSession>();
+export const logOut = createEffect<React.MouseEvent<HTMLElement>, {}>();
+
+getRole.use(API.getRole);
+logOut.use(API.logOut);
+
+export const $isRolePending = getRole.pending;

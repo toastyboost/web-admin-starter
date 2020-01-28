@@ -1,9 +1,11 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import { MainContainer } from './styles'
+import { MainContainer } from './styles';
 
 type MainProps = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
-export const Main: React.FC<MainProps> = ({ children }) => <MainContainer>{children}</MainContainer>
+export const Main: React.FC<MainProps> = ({ children }) => (
+  <MainContainer>{children}</MainContainer>
+);

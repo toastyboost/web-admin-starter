@@ -1,6 +1,6 @@
 import { Guard } from 'router-guards';
 
-import { UserSession, Roles } from './model';
+import { UserSession, Roles } from 'api/user';
 
 export function onlyAnon(): Guard<UserSession> {
   return (route, context) => (context && context.role ? null : route);

@@ -1,18 +1,21 @@
-import * as React from 'react'
-import { Layout } from 'antd'
+import * as React from 'react';
+import { Layout } from 'antd';
 
-import { Header, Footer, Main } from 'ui/organisms'
+import { Header, Footer, Main } from 'ui/organisms';
+import { useAuth } from 'features/user';
 
-type LandingLayoutProps = {
-  children: React.ReactNode
-}
+export const GenericTemplate: React.FC = ({ children }) => {
+  const isAuth = useAuth();
 
-export const GenericTemplate: React.FC<LandingLayoutProps> = ({ children }) => (
-  <Layout>
-    <Header />
+  return isAuth ? (
     <Layout>
-      <Main>{children}</Main>
+      <Header />
+      <Layout>
+        <Main>{children}</Main>
+      </Layout>
+      <Footer />
     </Layout>
-    <Footer />
-  </Layout>
-)
+  ) : (
+    <Layout>{children}</Layout>
+  );
+};

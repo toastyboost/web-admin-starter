@@ -10,9 +10,14 @@ Web Admin starter
 
 - [x] React, React Router
 - [x] Effector
+- [x] Router-Guards
+
+## Layout
+
+- [x] Login form
 
 ## TODO
 
-- [ ] Add login page
 - [ ] Update TS config
 - [ ] Add table boilerplate
+- [ ] Add UID to requests

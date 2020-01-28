@@ -18,10 +18,9 @@ export const request = async ({
     method,
     body: JSON.stringify(params),
   };
+  const mockMethod = `${method} ${url}`;
 
   try {
-    const mockMethod = `${method} ${url}`;
-
     if (mockMethod in apiMock) {
       return fetchMocks(fetchUrl, options);
     }
