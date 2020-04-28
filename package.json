@@ -3,37 +3,39 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.23.5",
-    "effector": "^20.11.1",
-    "effector-react": "^20.6.0",
+    "antd": "^4.1.5",
+    "effector": "^20.14.0",
+    "effector-form": "^0.0.33",
+    "effector-react": "^20.7.1",
     "history": "^4.10.1",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.1.2",
-    "router-guards": "^0.0.6",
-    "styled-components": "^5.0.0-beta.9",
-    "styled-normalize": "^8.0.6"
+    "react-scripts": "3.4.1",
+    "router-guards": "^0.0.7",
+    "styled-components": "^5.1.0",
+    "styled-normalize": "^8.0.7"
   },
   "devDependencies": {
-    "@types/node": "12.7.8",
-    "@types/react": "16.9.4",
-    "@types/react-dom": "16.9.1",
-    "@types/react-router-dom": "^5.1.0",
-    "@types/styled-components": "^4.1.19",
-    "@typescript-eslint/eslint-plugin": "^2.16.0",
-    "@typescript-eslint/parser": "^2.16.0",
-    "eslint": "^6.6.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.17.0",
-    "prettier": "^1.19.1",
-    "typescript": "^3.7.4"
+    "@types/node": "13.13.4",
+    "@types/react": "16.9.34",
+    "@types/react-dom": "16.9.7",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/styled-components": "^5.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.19.0",
+    "prettier": "^2.0.5",
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "update": "ncu -u"
   },
   "eslintConfig": {
     "extends": "react-app"

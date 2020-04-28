@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Form as AntForm } from 'antd';
 import { Event } from 'effector';
+import { Form as AntForm } from "antd";
 
 type MessageFormProps = {
-  handleSubmit: Event<React.FormEvent<HTMLFormElement>>;
+  handleSubmit: Event<void>;
 };
 
 export const Form: React.FC<MessageFormProps> = ({
@@ -13,9 +13,11 @@ export const Form: React.FC<MessageFormProps> = ({
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleSubmit) {
-      handleSubmit(event);
+      handleSubmit();
     }
   };
 
-  return <AntForm onSubmit={onSubmit}>{children}</AntForm>;
+  return <form onSubmit={onSubmit}>
+    <AntForm>{children}</AntForm>
+  </form>;
 };

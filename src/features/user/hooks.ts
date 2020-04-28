@@ -1,8 +1,9 @@
-import { useStore } from 'effector-react';
+import * as React from 'react';
 
-import { $session } from './model';
+import { getUser } from './model';
 
 export const useAuth = () => {
-  const session = useStore($session);
-  return Boolean(session.role);
+  React.useEffect(() => {
+    getUser();
+  }, []);
 };

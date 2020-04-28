@@ -1,4 +1,4 @@
-export { $session, $isRolePending, getRole, logOut } from './model';
+export { $user, $isUserPending, getUser, logIn, logOut } from './model';
 
 export { onlyAnon, onlyUsers, onlyFor } from './guards';
 

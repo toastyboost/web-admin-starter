@@ -1,23 +1,38 @@
-import { createEvent, sample, guard } from 'effector';
+import { createEvent, sample, guard, forward } from 'effector';
+import { createInput, createForm } from 'effector-form';
 
-// import { logIn } from 'features/user';
+import { Credentials } from 'api/user';
+import { logIn } from 'features/user';
 
 import { loginValidator, passValidator } from 'lib/validators';
 
-export const submitLogin = createEvent<React.FormEvent<HTMLFormElement>>();
+export const submitForm = createEvent<void>();
+export const resetForm = createEvent<void>();
 
-export const loginStore = { name: 'login', validator: loginValidator };
+export const loginStore = createInput({
+  name: 'email',
+  validator: loginValidator,
+});
 
-export const passStore = { name: 'pass', validator: passValidator };
+export const passStore = createInput({
+  name: 'password',
+  validator: passValidator,
+});
 
-export const loginForm = {
-  name: 'form',
+export const loginForm = createForm<Credentials>({
+  name: 'loginForm',
   fields: [loginStore, passStore],
-  submit: submitLogin,
-};
+  submit: submitForm,
+  reset: resetForm,
+});
 
-// guard({
-//   source: sample(loginForm.$values, submitForm),
-//   filter: loginForm.$isValid,
-//   target: logIn,
-// });
+guard({
+  source: sample(loginForm.$values, submitForm),
+  filter: loginForm.$isValid,
+  target: logIn,
+});
+
+forward({
+  from: logIn.done,
+  to: resetForm,
+});

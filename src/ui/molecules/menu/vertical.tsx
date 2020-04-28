@@ -1,24 +1,26 @@
 import * as React from 'react'
-import { Menu, Icon } from 'antd'
+import styled from 'styled-components'
+import { Menu } from 'antd'
+
 import { Link } from 'ui/atoms'
 
 type MenuDataProps = {
-  menuData: Array<MenuItemProps>
-  defaultSelectedKeys?: Array<string>
-  defaultOpenKeys?: Array<string>
+  menuData: Array<MenuItemProps>;
+  defaultSelectedKeys?: Array<string>;
+  defaultOpenKeys?: Array<string>;
 }
 
 type MenuItemProps = {
-  title: string
-  icon?: string
-  to?: string
-  data?: Array<SubItemProps>
+  title: string;
+  icon?: React.ReactNode;
+  to?: string;
+  data?: Array<SubItemProps>;
 }
 
 type SubItemProps = {
-  title: string
-  icon?: string
-  to?: string
+  title: string;
+  icon?: string;
+  to?: string;
 }
 
 export const VerticalMenu: React.FC<MenuDataProps> = ({
@@ -36,24 +38,26 @@ export const VerticalMenu: React.FC<MenuDataProps> = ({
             key={`sub-${key}`}
             title={
               <span>
-                {icon && <Icon type={icon} />} {title}
+                {icon && icon} {title}
               </span>
             }
           >
             {data.map(({ title, to, icon }, subKey) => (
               <Menu.Item key={`sub-item-${subKey}`}>
-                {icon && <Icon type={icon} />}
+                {icon && icon}
                 {to ? <Link to={to}>{title}</Link> : title}
               </Menu.Item>
             ))}
           </SubMenu>
         ) : (
-          <Menu.Item key={key}>
-            {icon && <Icon type={icon} />}
-            {to ? <Link to={to}>{title}</Link> : title}
-          </Menu.Item>
-        )
+            <Menu.Item key={key}>
+              {icon && icon}
+              {to ? <Link to={to}>{title}</Link> : title}
+            </Menu.Item>
+          )
       )}
     </Menu>
   )
 }
+
+export const MenuLink = styled(Link)``

@@ -1,40 +1,53 @@
 import * as React from 'react';
 import { useStore } from 'effector-react';
-import { Form, Icon, Input as AntInput } from 'antd';
+import { Form, Input as AntInput } from 'antd';
+import { InputResult } from 'effector-form';
 
 type DefaultFieldProps = {
-  store: any;
+  store: InputResult;
   config: {
+    label?: string;
+    required?: boolean;
+    type?: string;
+    name?: string;
     placeholder?: string;
-    icon?: string;
-    name: string;
-    touched?: boolean;
+    prefix?: React.ReactNode | string;
+    suffix?: React.ReactNode | string;
+    size?: 'large' | 'small';
   };
 };
 
 export const Input = ({ store, config }: DefaultFieldProps) => {
-  const { icon, name, placeholder, touched } = config;
+  const { label, required, name, placeholder, prefix, suffix, size, type } = config;
   const { $value, $error, changed } = store;
 
-  // const error = useStore($error);
-  // const value = useStore($value);
+  const value = useStore($value);
+  const error = useStore($error);
 
-  // const isError = !!error && touched;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    changed(value)
+  }
+
+  const isError = false
 
   return (
     <Form.Item
-      // validateStatus={isError ? 'error' : ''}
-      // help={isError && error}
+      label={label}
+      required={required}
+      validateStatus={isError ? 'error' : ''}
+      help={isError && error}
       className={`form-item-${name}`}
     >
       <AntInput
-        // value={value}
-        prefix={<Icon type={icon} />}
-        type={name}
+        value={value}
+        prefix={prefix}
+        suffix={suffix}
+        type={type}
         name={name}
         placeholder={placeholder}
-        onChange={changed}
-        size="large"
+        size={size}
+        onChange={handleChange}
       />
     </Form.Item>
   );

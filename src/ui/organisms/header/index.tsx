@@ -12,7 +12,7 @@ export const Header = () => {
     <HeaderContainer>
       <Logo to="/" />
       <Nav data={[]} />
-      <LogoutButton type="primary" icon="logout" onClick={logOut}>
+      <LogoutButton type="primary" icon="logout" onClick={() => logOut()}>
         Выйти
       </LogoutButton>
     </HeaderContainer>

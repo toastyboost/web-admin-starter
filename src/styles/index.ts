@@ -1,2 +1,2 @@
 export { GenericStyles } from './defaults';
-export { antOverrides } from './ant';
+export { AntStylesOveride } from './ant';

@@ -1,30 +1,39 @@
 import * as React from 'react';
+import styled from 'styled-components';
+
 import { Button, Checkbox, Typography } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import { Form, Input } from 'ui/atoms';
 
-import { submitLogin, loginStore, passStore } from './model';
-import { Container, Actions, Rember } from './styles';
+import { submitForm, loginStore, passStore } from './model';
 
 const fields = {
   login: {
-    placeholder: 'Login',
-    icon: 'user',
-    name: 'login',
+    store: loginStore,
+    config: {
+      placeholder: 'Login',
+      icon: 'user',
+      name: 'login',
+      prefix: <UserOutlined />,
+    }
   },
   pass: {
-    placeholder: 'Password',
-    icon: 'lock',
-    name: 'password',
+    store: passStore,
+    config: {
+      placeholder: 'Password',
+      name: 'password',
+      prefix: <LockOutlined />,
+    }
   },
 };
 
 export const LoginPage: React.FC = () => (
   <Container>
     <Typography.Title level={4}>Authentication</Typography.Title>
-    <Form handleSubmit={submitLogin}>
-      <Input store={loginStore} config={fields.login} />
-      <Input store={passStore} config={fields.pass} />
+    <Form handleSubmit={submitForm}>
+      <Input {...fields.login} />
+      <Input {...fields.pass} />
       <Actions>
         <Rember>
           <Checkbox checked>Remember me</Checkbox>
@@ -37,3 +46,34 @@ export const LoginPage: React.FC = () => (
     </Form>
   </Container>
 );
+
+const Container = styled.div`
+  margin: auto;
+  background-color: #fff;
+  padding: 24px 24px 24px 24px;
+  border-radius: 3px;
+
+  h4 {
+    text-align: center;
+    padding-bottom: 8px;
+  }
+`;
+
+const Actions = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  button {
+    width: 100%;
+    height: 40px;
+  }
+`;
+
+const Rember = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 16px;
+`;
