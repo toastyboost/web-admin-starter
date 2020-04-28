@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { Event } from 'effector';
-import { Form as AntForm } from "antd";
-
 type MessageFormProps = {
   handleSubmit: Event<void>;
 };
@@ -18,6 +16,6 @@ export const Form: React.FC<MessageFormProps> = ({
   };
 
   return <form onSubmit={onSubmit}>
-    <AntForm>{children}</AntForm>
+    {children}
   </form>;
 };

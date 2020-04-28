@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Layout, Spin } from 'antd';
 
 import { Header, Footer, Main } from 'ui/organisms';
+import { absoluteCenterPosition } from 'lib/constants';
 
 type GenericTemplateProps = {
   isAuthed: boolean;
@@ -14,8 +15,8 @@ export const GenericTemplate: React.FC<GenericTemplateProps> = ({
   isPending
 }) => {
 
-  if (!isPending && isAuthed) {
-    return <Spin size="large" spinning={isPending}></Spin>
+  if (isPending && !isAuthed) {
+    return <Spin size="large" spinning={isPending} style={absoluteCenterPosition} />
   }
 
   return <Spin size="large" spinning={isPending}>

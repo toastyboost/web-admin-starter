@@ -29,7 +29,8 @@ $user
   .on(getUser.fail, () => defaultUser)
   .on(logOut.done, () => defaultUser);
 
-$isUserPending.on(getUser.done, () => false).on(getUser.pending, () => true);
+$isUserPending.on(getUser.finally, () => false);
+$isUserPending.map((item) => console.log('!!!', item));
 
 userDomain.onCreateEffect((effect) => {
   $user.on(effect.fail, (user, payload) => {
